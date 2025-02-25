@@ -9,4 +9,45 @@ public class TravelCalculatePremiumRequest {
     private Date agreementDateFrom;
     private Date agreementDateTo;
 
+    public TravelCalculatePremiumRequest() {
+    }
+
+    public TravelCalculatePremiumRequest(String personFirstName, String personLastName, Date agreementDateFrom, Date agreementDateTo) {
+        this.personFirstName = personFirstName;
+        this.personLastName = personLastName;
+        this.agreementDateFrom = agreementDateFrom;
+        this.agreementDateTo = agreementDateTo;
+    }
+
+    public String getPersonFirstName() {
+        return personFirstName;
+    }
+
+    public void setPersonFirstName(String personFirstName) {
+        this.personFirstName = personFirstName;
+    }
+
+    public Date getAgreementDateTo() {
+        return agreementDateTo;
+    }
+
+    public void setAgreementDateTo(Date agreementDateTo) {
+        this.agreementDateTo = agreementDateTo;
+    }
+
+    public Date getAgreementDateFrom() {
+        return agreementDateFrom;
+    }
+
+    public void setAgreementDateFrom(Date agreementDateFrom) {
+        this.agreementDateFrom = agreementDateFrom;
+    }
+
+    public String getPersonLastName() {
+        return personLastName;
+    }
+
+    public void setPersonLastName(String personLastName) {
+        this.personLastName = personLastName;
+    }
 }
