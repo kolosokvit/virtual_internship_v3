@@ -13,19 +13,34 @@ class TravelCalculatePremiumServiceImplTest {
     TravelCalculatePremiumServiceImpl service = new TravelCalculatePremiumServiceImpl();
 
     @Test
-    void shouldPopulateTravelCalculatePremiumResponse() {
+    void shouldPopulateResponseWithCorrectPersonFirstName() {
         TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
         request.setPersonFirstName("Bob");
-        request.setPersonLastName("White");
-        request.setAgreementDateFrom(new Date());
-        request.setAgreementDateTo(new Date());
-
         TravelCalculatePremiumResponse response = service.calculatePremium(request);
-
         assertEquals(request.getPersonFirstName(), response.getPersonFirstName());
-        assertEquals(request.getPersonLastName(), response.getPersonLastName());
-        assertEquals(request.getAgreementDateFrom(), response.getAgreementDateFrom());
-        assertEquals(request.getAgreementDateTo(), response.getAgreementDateTo());
     }
 
+    @Test
+    void shouldPopulateResponseWithCorrectPersonLastName() {
+        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
+        request.setPersonLastName("White");
+        TravelCalculatePremiumResponse response = service.calculatePremium(request);
+        assertEquals(request.getPersonLastName(), response.getPersonLastName());
+    }
+
+    @Test
+    void shouldPopulateResponseWithCorrectDateFrom() {
+        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
+        request.setAgreementDateFrom(new Date());
+        TravelCalculatePremiumResponse response = service.calculatePremium(request);
+        assertEquals(request.getAgreementDateFrom(), response.getAgreementDateFrom());
+    }
+
+    @Test
+    void shouldPopulateResponseWithCorrectDateTo() {
+        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
+        request.setAgreementDateTo(new Date());
+        TravelCalculatePremiumResponse response = service.calculatePremium(request);
+        assertEquals(request.getAgreementDateTo(), response.getAgreementDateTo());
+    }
 }
