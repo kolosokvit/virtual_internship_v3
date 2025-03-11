@@ -16,10 +16,12 @@ class TravelCalculatePremiumServiceImpl implements TravelCalculatePremiumService
         response.setPersonLastName(request.getPersonLastName());
         response.setAgreementDateFrom(request.getAgreementDateFrom());
         response.setAgreementDateTo(request.getAgreementDateTo());
-
-        long daysDiff = (response.getAgreementDateTo().getTime() - response.getAgreementDateFrom().getTime()) / (1000 * 60 * 60 * 24);
-        response.setAgreementPrice(new BigDecimal(daysDiff));
+        response.setAgreementPrice(new BigDecimal(calculateAgreementDurationInDays(request)));
         return response;
+    }
+
+    private long calculateAgreementDurationInDays(TravelCalculatePremiumRequest request) {
+        return request.getAgreementDateTo().getTime() - request.getAgreementDateFrom().getTime() / (1000 * 60 * 60 * 24);
     }
 
 }
