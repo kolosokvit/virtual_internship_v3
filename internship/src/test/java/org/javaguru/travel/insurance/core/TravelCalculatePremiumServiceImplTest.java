@@ -14,33 +14,38 @@ class TravelCalculatePremiumServiceImplTest {
 
     @Test
     void shouldPopulateResponseWithCorrectPersonFirstName() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
-        request.setPersonFirstName("Bob");
+        TravelCalculatePremiumRequest request = createRequest();
         TravelCalculatePremiumResponse response = service.calculatePremium(request);
         assertEquals(request.getPersonFirstName(), response.getPersonFirstName());
     }
 
     @Test
     void shouldPopulateResponseWithCorrectPersonLastName() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
-        request.setPersonLastName("White");
+        TravelCalculatePremiumRequest request = createRequest();
         TravelCalculatePremiumResponse response = service.calculatePremium(request);
         assertEquals(request.getPersonLastName(), response.getPersonLastName());
     }
 
     @Test
     void shouldPopulateResponseWithCorrectDateFrom() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
-        request.setAgreementDateFrom(new Date());
+        TravelCalculatePremiumRequest request = createRequest();
         TravelCalculatePremiumResponse response = service.calculatePremium(request);
         assertEquals(request.getAgreementDateFrom(), response.getAgreementDateFrom());
     }
 
     @Test
     void shouldPopulateResponseWithCorrectDateTo() {
-        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
-        request.setAgreementDateTo(new Date());
+        TravelCalculatePremiumRequest request = createRequest();
         TravelCalculatePremiumResponse response = service.calculatePremium(request);
         assertEquals(request.getAgreementDateTo(), response.getAgreementDateTo());
+    }
+
+    private TravelCalculatePremiumRequest createRequest() {
+        TravelCalculatePremiumRequest request = new TravelCalculatePremiumRequest();
+        request.setPersonFirstName("Bob");
+        request.setPersonLastName("White");
+        request.setAgreementDateFrom(new Date());
+        request.setAgreementDateTo(new Date());
+        return request;
     }
 }
