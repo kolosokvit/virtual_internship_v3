@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TravelCalculatePremiumServiceImplTest {
 
-    TravelCalculatePremiumServiceImpl service = new TravelCalculatePremiumServiceImpl();
+    DateTimeService dateTimeService = new DateTimeService();
+    TravelCalculatePremiumServiceImpl service = new TravelCalculatePremiumServiceImpl(dateTimeService);
 
     @Test
     void shouldPopulateResponseWithCorrectPersonFirstName() {
