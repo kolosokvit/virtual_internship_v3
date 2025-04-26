@@ -4,23 +4,27 @@ import org.javaguru.travel.insurance.rest.TravelCalculatePremiumRequest;
 import org.javaguru.travel.insurance.rest.TravelCalculatePremiumResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class TravelCalculatePremiumServiceImplTest {
-    private DateTimeService dateTimeService;
+    @Mock private DateTimeService dateTimeService;
+    @InjectMocks
     private TravelCalculatePremiumServiceImpl service;
     private TravelCalculatePremiumRequest request;
 
     @BeforeEach
     void setUp() {
         request = createRequest();
-        dateTimeService = Mockito.mock(DateTimeService.class);
-        Mockito.when(dateTimeService.calculateDurationInDays(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
-        service = new TravelCalculatePremiumServiceImpl(dateTimeService);
+        when(dateTimeService.calculateDurationInDays(request.getAgreementDateFrom(), request.getAgreementDateTo())).thenReturn(0L);
     }
     @Test
     void shouldPopulateResponseWithCorrectPersonFirstName() {
